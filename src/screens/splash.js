@@ -12,7 +12,10 @@ export class SplashScreen extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <Text>Chat-A-Lot</Text>
+                <Image
+                    style={{width: 200, height: 200}}
+                    source={require('../assets/launcher_icon.png')} /> 
+                <Text>Chat Panel</Text>
             </View>
         )
     }
