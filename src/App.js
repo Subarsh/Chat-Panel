@@ -7,14 +7,12 @@
  */
 
 import React, {Component} from 'react';
-import Firebase from 'firebase';
-import firebaseConfig from './config/firebaseConfig';
 import {
   StyleSheet,
   View,
   AsyncStorage
 } from 'react-native';
-import AppNavigator from './navigator/appNavigator';
+import AppNavigator from '../navigator/appNavigator';
 
 export class App extends Component{
 
