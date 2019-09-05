@@ -16,33 +16,33 @@ export class LoginScreen extends Component{
     }
 
     handleLogin = () => {
-        let url = Url() + '/user/login';
-        let user = {
-            email: this.state.email,
-            password: this.state.password
-        }
-        axios
-            .post(url,user)
-            .then(res => {
-                alert(JSON.stringify(res.data.user));
-                if(res.status === 200){
-                    let token = res.data.token;
-                    if(token){
-                        this.storeCredentials(token,res.data.user);
-                        setTimeout(() => {
-                            this.props.navigation.navigate('HomeScreen');
-                        },1000);
-                    }else{
-                        alert('Auth Failed');
-                    }
-                }else if(res.status === 404){
-                    this.setState({error : res.data.message});
-                    alert('Auth Failed');
-                }
-            })
-            .catch(err => {
-                alert("error: " + err);
-            });
+        // let url = Url() + '/user/login';
+        // let user = {
+        //     email: this.state.email,
+        //     password: this.state.password
+        // }
+        // axios
+        //     .post(url,user)
+        //     .then(res => {
+        //         if(res.status === 200){
+        //             let token = res.data.token;
+        //             if(token){
+        //                 this.storeCredentials(token,res.data.user);
+        //                 setTimeout(() => {
+        //                     this.props.navigation.navigate('home');
+        //                 },1000);
+        //             }else{
+        //                 alert('Auth Failed');
+        //             }
+        //         }else if(res.status === 404){
+        //             this.setState({error : res.data.message});
+        //             alert('Auth Failed');
+        //         }
+        //     })
+        //     .catch(err => {
+        //         alert("error: " + err);
+        //     });
+        this.props.navigation.navigate('home');
     }
 
     storeCredentials = async (token,user) => {

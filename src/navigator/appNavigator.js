@@ -1,13 +1,47 @@
 import {
     createStackNavigator, 
     createAppContainer,
-    createSwitchNavigator
+    createSwitchNavigator,
+    createBottomTabNavigator
 } from 'react-navigation';
 import { SplashScreen } from '../screens/splash';
 import { LoginScreen } from '../screens/login';
-import { ChatScreen } from '../screens/chat';
 import { SignupScreen } from '../screens/signup';
-import { HomeScreen } from '../screens/home';
+import { MessageScreen } from '../screens/message';
+import { GroupScreen } from '../screens/group';
+import { UserMessageScreen } from '../screens/userMessage';
+
+const messagesStackNavigator = createStackNavigator({
+    UserMessages : {
+        screen: UserMessageScreen
+    }
+})
+
+const messageStackNavigator = createStackNavigator({
+    Message: {
+        screen: MessageScreen,
+    }
+    
+},{
+    headerMode: null
+})
+
+const groupStackNavigator = createStackNavigator({
+    Group: {
+        screen: GroupScreen,
+    }
+},{
+    headerMode: null
+})
+
+const tabNavigator = createBottomTabNavigator({
+    message: {
+        screen: messageStackNavigator
+    },
+    group: {
+        screen: groupStackNavigator
+    }
+});
 
 const stackNavigator = createStackNavigator({
     loginpage: {
@@ -22,10 +56,15 @@ const stackNavigator = createStackNavigator({
             header: null
         }
     },
-    HomeScreen: HomeScreen,
-    ChatScreen: ChatScreen
+    home: tabNavigator,
+    message: MessageScreen,
+    group: GroupScreen,
+    UserMessage: {
+        screen: messagesStackNavigator
+    }
 },{
-    initialRouteName: 'loginpage'
+    initialRouteName: 'loginpage',
+    headerMode: 'none'
 })
 
 const switchNavigator = createSwitchNavigator({

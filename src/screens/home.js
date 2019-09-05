@@ -4,6 +4,10 @@ import Token from '../storage/token';
 import Email from '../storage/email';
 
 export class HomeScreen extends Component{
+    
+    static navigationOptions = {
+        header: null
+    }
 
     constructor(props){
         super(props);
